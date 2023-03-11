@@ -7,8 +7,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { BufferGeometryUtils, MeshStandardMaterial, Vector3, LinearEncoding, RepeatWrapping, TextureLoader  } from 'three'
 import {Text3D , MeshReflectorMaterial, PerspectiveCamera} from "@react-three/drei"
 import { Mesh } from 'three';
-
-
+import keys from './sounds'
 const mouse = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
 
@@ -16,10 +15,6 @@ const raycaster = new THREE.Raycaster();
 window.addEventListener("click", function(e){
   mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
 	mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
-})
-
-window.addEventListener("onkeydown", function(event){
-  console.log(event);
 })
 
 
@@ -57,7 +52,7 @@ const SongController = ({song}:{song: any}):any =>{
   mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
   const audioLoader = new THREE.AudioLoader();
   const cubeSound = new THREE.Audio(listener);
-  audioLoader.load(`public/Sounds/${song}.ogg`, function (buffer) {
+  audioLoader.load(song, function (buffer) {
     cubeSound.setBuffer(buffer)
     cubeSound.setLoop(false)
     cubeSound.setVolume(0.03)
@@ -77,30 +72,30 @@ function Box( {setColorTile, colorTile , setColor1, color1, setColor2, color2, s
       <CameraOrbirtController/>
         <boxGeometry  args={[13,3,0.5]}  />
         <meshStandardMaterial color="#2e290f" />
-        <Tiles keyTile={"q"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key01" positionx={-5.9} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"w"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key02" positionx={-5.4} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"e"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key03" positionx={-4.9} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"r"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key04" positionx={-4.4} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"t"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key05" positionx={-3.9} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"y"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key06" positionx={-3.4} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"u"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key07" positionx={-2.9} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"i"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key08" positionx={-2.4} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"o"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key09" positionx={-1.9} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"p"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key10" positionx={-1.4} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"a"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key11" positionx={-0.9} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"s"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key12" positionx={-0.4} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"d"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key13" positionx={0.1} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"f"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key14" positionx={0.6} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"g"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key15" positionx={1.1} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"h"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key16" positionx={1.6} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"j"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key17" positionx={2.1} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"k"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key18" positionx={2.6} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"l"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key19" positionx={3.1} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"z"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key20" positionx={3.6} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"x"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key21" positionx={4.1} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"c"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key22" positionx={4.6} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"v"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key23" positionx={5.1} positiony={-0.5} positionz={0.3}/> 
-        <Tiles keyTile={"b"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song="Key24" positionx={5.6} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"q"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key01"]} positionx={-5.9} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"w"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key02"]} positionx={-5.4} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"e"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key03"]} positionx={-4.9} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"r"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key04"]} positionx={-4.4} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"t"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key05"]} positionx={-3.9} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"y"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key06"]} positionx={-3.4} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"u"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key07"]} positionx={-2.9} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"i"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key08"]} positionx={-2.4} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"o"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key09"]} positionx={-1.9} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"p"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key10"]} positionx={-1.4} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"a"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key11"]} positionx={-0.9} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"s"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key12"]} positionx={-0.4} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"d"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key13"]} positionx={0.1} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"f"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key14"]} positionx={0.6} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"g"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key15"]} positionx={1.1} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"h"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key16"]} positionx={1.6} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"j"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key17"]} positionx={2.1} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"k"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key18"]} positionx={2.6} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"l"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key19"]} positionx={3.1} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"z"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key20"]} positionx={3.6} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"x"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key21"]} positionx={4.1} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"c"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key22"]} positionx={4.6} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"v"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key23"]} positionx={5.1} positiony={-0.5} positionz={0.3}/> 
+        <Tiles keyTile={"b"} setColorTile={setColorTile} colorTile={colorTile} setColor1={setColor1} color1={color1} setColor2={setColor2}  color2={color2} setColor3={setColor3} color3={color3} song={keys["key24"]} positionx={5.6} positiony={-0.5} positionz={0.3}/> 
         
       </mesh>
   )
@@ -126,7 +121,7 @@ function Tiles({song, positionx, positiony, positionz, setColor1, color1, setCol
     camera.add(listener)
   const audioLoader = new THREE.AudioLoader();
   const cubeSound = new THREE.Audio(listener);
-  audioLoader.load(`public/Sounds/${song}.ogg`, function (buffer) {
+  audioLoader.load(song, function (buffer) {
     cubeSound.setBuffer(buffer)
     cubeSound.setLoop(false)
     cubeSound.setVolume(1)
@@ -137,7 +132,6 @@ function Tiles({song, positionx, positiony, positionz, setColor1, color1, setCol
   return( 
     <mesh onClick={(e) => {
       const listener = new THREE.AudioListener();
-      console.log(color1)
       setColor1(color1 === "green" ? "yellow" : "green")
       setColor2(color2 === "red" ? "violet": "red")
       setColor3(color3 === "blue" ? "#03fcfc": "blue")
@@ -147,7 +141,7 @@ function Tiles({song, positionx, positiony, positionz, setColor1, color1, setCol
       mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
       const audioLoader = new THREE.AudioLoader();
       const cubeSound = new THREE.Audio(listener);
-      audioLoader.load(`public/Sounds/${song}.ogg`, function (buffer) {
+      audioLoader.load(song, function (buffer) {
         cubeSound.setBuffer(buffer)
         cubeSound.setLoop(false)
         cubeSound.setVolume(1)
@@ -165,7 +159,7 @@ function Tiles({song, positionx, positiony, positionz, setColor1, color1, setCol
         //   mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
         //   const audioLoader = new THREE.AudioLoader();
         //   const cubeSound = new THREE.Audio(listener);
-        //   audioLoader.load(`public/Sounds/${song}.ogg`, function (buffer) {
+        //   audioLoader.load(song, function (buffer) {
         //     cubeSound.setBuffer(buffer)
         //     cubeSound.setLoop(false)
         //     cubeSound.setVolume(1)
