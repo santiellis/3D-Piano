@@ -176,7 +176,7 @@ function Tiles({song, positionx, positiony, positionz, setColor1, color1, setCol
      
         <boxGeometry args={[0.3,1.5,0.1]} />
         <meshStandardMaterial color={colorTile} />
-        <Text3D   size={0.3} font={"public/Roboto_Regular.json"} position={[-0.16,-0.6,-0.14]} >
+        <Text3D   size={0.3} font={"/Roboto_Regular.json"} position={[-0.16,-0.6,-0.14]} >
           {keyTile.toUpperCase()}
           <meshStandardMaterial color={"black"}/>
         </Text3D>
@@ -187,8 +187,8 @@ function Tiles({song, positionx, positiony, positionz, setColor1, color1, setCol
 function Ground() {
 
   const [roughness, normal] = useLoader(TextureLoader, [
-   "public/terrain-roughness.jpg",
-   "/public/terrain-normal.jpg",
+   "/terrain-roughness.jpg",
+   "/terrain-normal.jpg",
   ]);
 
 useEffect(() => {
@@ -305,7 +305,7 @@ function RimLight({ brightness, color }:{brightness:any, color:any}):any {
 
 function Text(){
   return(
-    <Text3D bevelThickness={0.3} bevelEnabled={true} size={2} font={"public/Roboto_Regular.json"} position={[-5,3,-2]}>
+    <Text3D bevelThickness={0.3} bevelEnabled={true} size={2} font={"/Roboto_Regular.json"} position={[-5,3,-2]}>
         3D Piano
       <meshStandardMaterial color={"pink"}/>
       </Text3D>
