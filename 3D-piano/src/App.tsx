@@ -333,7 +333,11 @@ function App() {
 
   return (
     <div className="App h-screen w-screen">
-      <h1 className="bg-black text-center text-white select-none">Try pressing the white keys</h1>
+      <div className='text-center flex flex-row text-white select-none justify-around bg-black'>
+      <a className='bg-black text-center hover:text-red-400 text-white select-nonehover:text-red-300' href='https://santiagoellis.dev'>To home</a>
+      <h1 className="bg-black text-center  text-white select-none">Try pressing the white keys</h1>
+      <a className='bg-black text-center hover:text-red-400 text-white select-nonehover:text-red-300' href='https://github.com/santiellis'>My Github</a>
+      </div>
           <ThreeScene/>
     </div>
   )
